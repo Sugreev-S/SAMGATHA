@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+/* Variables */
+:root {
+  --easeInOut: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --turnDuration: 0.6s;
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #1a1a1a; /* Dark background color */
+  padding: 0;
+  overflow: hidden; /* Prevent scrolling on body */
+}
+
+#app {
+  display: flex;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a; /* Dark background color */
+}
+
+header {
+  display: flex;
+  position: relative;
+}
+
+header h1 {
+  font-family: 'Droid Sans Mono', monospace;
+  font-weight: lighter;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: white;
+}
+.app {
+  position: relative;
+  width: 100vw; /* Set width to viewport width */
+  height: 100vh; /* Set height to viewport height */
+  overflow: hidden;
+}
+
+.splineScene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.flipClockContainer {
+  position: absolute;
+  top: 8%; /* Adjust vertical position as needed */
+  left: 47%;
+  transform: translateX(-50%);
+  z-index: 1; /* Ensure flip clock is on top of spline scene */
+}
+
+
+
+
+/* Flip Clock */
+.flipClock {
+  display: flex;
+  margin: 250px 360px;
+  justify-content: space-between;
+  width: calc(3 * 160px + 120px); /* Increased width */
+} 
+
+.flipUnitContainer {
+  display: block;
+  position: relative;
+  width: 160px; /* Increased width */
+  height: 140px; /* Increased height */
+  perspective-origin: 50% 50%;
+  perspective: 1000px; /* Increased perspective for more depth */
+  background-color: #222; /* Darker background color */
+  border-radius: 8px; /* Increased border radius */
+  box-shadow: 0px 20px 30px -20px #000; /* Increased box shadow for emboss effect */
+  margin: 20px; /* Increased margin for spacing */
+}
+
+.upperCard,
+.lowerCard {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: 130px;
+  height: 50%;
+  overflow: hidden;
+  border: 1px solid #333; /* Darker border color */
+}
+
+.upperCard span,
+.lowerCard span {
+  font-size: 5em;
+  font-family: 'Droid Sans Mono', monospace;
+  font-weight: lighter;
+  color: #aaa; /* Lighter text color */
+}
+
+.upperCard {
+  align-items: flex-end;
+  border-bottom: 1px solid #333; /* Darker border color */
+  border-top-left-radius: 8px; /* Increased border radius */
+  border-top-right-radius: 8px; /* Increased border radius */
+}
+
+.upperCard span {
+  transform: translateY(50%);
+}
+
+.lowerCard {
+  align-items: flex-start;
+  border-top: 1px solid #333; /* Darker border color */
+  border-bottom-left-radius: 8px; /* Increased border radius */
+  border-bottom-right-radius: 8px; /* Increased border radius */
+}
+
+.lowerCard span {
+  transform: translateY(-50%);
+}
+
+.flipCard {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+.flipCard span {
+  font-family: 'Droid Sans Mono', monospace;
+  font-size: 5em;
+  font-weight: lighter;
+  color: #aaa; /* Lighter text color */
+}
+
+.flipCard.unfold {
+  top: 50%;
+  align-items: flex-start;
+  transform-origin: 50% 0%;
+  transform: rotateX(180deg);
+  background-color: #222; /* Darker background color */
+  border-bottom-left-radius: 8px; /* Increased border radius */
+  border-bottom-right-radius: 8px; /* Increased border radius */
+  border: 1px solid #333; /* Darker border color */
+  border-top: 1px solid #333; /* Darker border color */
+}
+
+.flipCard.unfold span {
+  transform: translateY(-50%);
+}
+
+.flipCard.fold {
+  top: 0%;
+  align-items: flex-end;
+  transform-origin: 50% 100%;
+  transform: rotateX(0deg);
+  background-color: #222; /* Darker background color */
+  border-top-left-radius: 8px; /* Increased border radius */
+  border-top-right-radius: 8px; /* Increased border radius */
+  border: 1px solid #333; /* Darker border color */
+  border-bottom: 1px solid #333; /* Darker border color */
+}
+
+.flipCard.fold span {
+  transform: translateY(50%);
+}
+
+.fold {
+  animation: fold var(--turnDuration) var(--easeInOut);
+  transform-style: preserve-3d;
+}
+
+.unfold {
+  animation: unfold var(--turnDuration) var(--easeInOut);
+  transform-style: preserve-3d;
+}
+
+@keyframes fold {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-180deg);
+  }
+}
+
+@keyframes unfold {
+  0% {
+    transform: rotateX(180deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+.separator {
+  font-size: 2em; /* Adjust font size as needed */
+  color: #FFF; /* Text color */
+  margin: 2em 0.5em; /* Adjust margin for spacing */
+}
+
+.quote {
+  position: absolute;
+  top: 500px; /* Adjust the vertical position as needed */
+  left: 52%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 26px;
+  font-family: normal; /* Specify font family */
+  font-weight: bold; /* Specify font weight */
+  font-style: italic; 
+  color: #ffffff; /* Change the color to your preference */
+  background-color: rgba(0, 0, 0, 0.5); /* Add background color with opacity */
+  backdrop-filter: blur(5px); /* Add blur effect */
+  padding: 10px 20px; /* Add padding for better readability */
+  border-radius: 10px; /* Add border radius for rounded corners */
+  z-index: 2; /* Ensure the quote appears above the spline scene */
+}
