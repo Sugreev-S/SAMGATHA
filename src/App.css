@@ -13,7 +13,7 @@
 
 body {
   margin: 0;
-  background-color: #1a1a1a; /* Dark background color */
+  background-color: black; /* Dark background color */
   padding: 0;
   overflow: hidden; /* Prevent scrolling on body */
 }
