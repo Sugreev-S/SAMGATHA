@@ -238,11 +238,15 @@ display: none;
 }
 
 
-@media  (max-width: 600px) {
+@media  (max-width: 1000px) {
 
   .html,body{
-    height: 50rem;
-    width: 50rem;
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+  }
+
+  .app{
     background-color: #000;
   }
   .bg_video1{
@@ -251,27 +255,30 @@ display: none;
 
   .bg_video2{
     display: block;
-    height: 90rem;
-    width: 110%;
+    height: 200%;
+    width: 100rem;
+    left: 100rem;
     background-color: #000;
     overflow: hidden;
   }
   .flipClock{
     width: calc(3 * 7rem + 7rem);
     left: 5rem;
+    top: 10rem;
   }
 
   .flipClockContainer{
     width: 7rem;
     height: 7rem;
     left: 15rem;
-    top: 30rem;
+    top: 10rem;
   }
 
   .flipUnitContainer{
     width: 7rem;
     height: 7rem;
-    margin: 0 1rem;
+    margin: 0 2rem;
+    top: 38rem;
   }
 
   .upperCard,
@@ -280,7 +287,7 @@ display: none;
 }
 
 .separator {
-  top: 7rem;
+  top: 40rem;
 }
 
 .upperCard span,
@@ -290,5 +297,10 @@ display: none;
 
 .flipCard span{
   font-size: 3.3rem;
+}
+
+.quote {
+  top: 58rem;
+  left: 30rem;
 }
 }
