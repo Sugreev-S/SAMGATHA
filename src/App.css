@@ -11,18 +11,19 @@
   box-sizing: border-box;
 }
 
-body {
+html,body {
   margin: 0;
   background-color: black; /* Dark background color */
+  height: 100%;
+  width: 100%;
   padding: 0;
-  overflow: hidden; /* Prevent scrolling on body */
 }
 
-#app {
+.app {
   display: flex;
   position: relative;
+  height: 100%;
   width: 100%;
-  min-height: 100vh;
   justify-content: center;
   align-items: center;
   background-color: #1a1a1a; /* Dark background color */
@@ -40,20 +41,14 @@ header h1 {
   letter-spacing: 0.1em;
   color: white;
 }
-.app {
-  position: relative;
-  width: 100vw; /* Set width to viewport width */
-  height: 100vh; /* Set height to viewport height */
-  overflow: hidden;
-}
 
-.splineScene {
+/* .splineScene {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-}
+} */
 
 .flipClockContainer {
   position: absolute;
@@ -63,28 +58,38 @@ header h1 {
   z-index: 1; /* Ensure flip clock is on top of spline scene */
 }
 
+.bg_video1{
+  height: 100vh;
+  width: 100%;
+  background-color: #000;
+  overflow: hidden;
+}
 
+.bg_video2{
+display: none;
+}
 
 
 /* Flip Clock */
 .flipClock {
   display: flex;
-  margin: 250px 360px;
   justify-content: space-between;
-  width: calc(3 * 160px + 120px); /* Increased width */
+  width: calc(3 * 10rem + 10rem); /* Increased width */
 } 
 
 .flipUnitContainer {
   display: block;
   position: relative;
-  width: 160px; /* Increased width */
-  height: 140px; /* Increased height */
-  perspective-origin: 50% 50%;
+  width: 10rem; /* Increased width */
+  height: 10rem;
+  top: 5rem;
+  left: -5rem;
+  /* perspective-origin: 50% 50%;
   perspective: 1000px; /* Increased perspective for more depth */
   background-color: #666666; /* Darker background color */
   border-radius: 8px; /* Increased border radius */
   box-shadow: 0px 20px 30px -20px #000; /* Increased box shadow for emboss effect */
-  margin: 20px; /* Increased margin for spacing */
+  margin: 2rem;
 }
 
 .upperCard,
@@ -92,7 +97,8 @@ header h1 {
   display: flex;
   position: relative;
   justify-content: center;
-  width: 130px;
+
+  width: 10rem;
   height: 50%;
   overflow: hidden;
   border: 1.5px solid #666666; /* Darker border color */
@@ -100,7 +106,7 @@ header h1 {
 
 .upperCard span,
 .lowerCard span {
-  font-size: 5em;
+  font-size: 5rem;
   font-family: 'Droid Sans Mono', monospace;
   font-weight: lighter;
   color: white; /* Lighter text color */
@@ -141,7 +147,7 @@ header h1 {
 
 .flipCard span {
   font-family: 'Droid Sans Mono', monospace;
-  font-size: 5em;
+  font-size: 5rem;
   font-weight: lighter;
   color: white; /* Lighter text color */
 }
@@ -207,24 +213,82 @@ header h1 {
 }
 
 .separator {
-  font-size: 2em; /* Adjust font size as needed */
+  position: relative;
+  left: -5rem;
+  top: 10rem;
+  font-size: 2.5rem; /* Adjust font size as needed */
   color: #FFF; /* Text color */
-  margin: 2em 0.5em; /* Adjust margin for spacing */
 }
 
 .quote {
   position: absolute;
-  top: 500px; /* Adjust the vertical position as needed */
-  left: 52%;
+  left: 50%;
+  top: 60%;
   transform: translateX(-50%);
   text-align: center;
-  font-size: 26px;
+  font-size: 2rem;
+  width: 50rem;
   font-family: "Poppins", sans-serif; /* Specify font family */
   font-weight: bold;
   color: #ffffff; /* Change the color to your preference */
   background-color: rgba(0, 0, 0, 0.5); /* Add background color with opacity */
   backdrop-filter: blur(5px); /* Add blur effect */
-  padding: 10px 20px; /* Add padding for better readability */
-  border-radius: 10px; /* Add border radius for rounded corners */
+  border-radius: 2rem; /* Add border radius for rounded corners */
   z-index: 2; /* Ensure the quote appears above the spline scene */
+}
+
+
+@media  (max-width: 600px) {
+
+  .html,body{
+    height: 50rem;
+    width: 50rem;
+    background-color: #000;
+  }
+  .bg_video1{
+    display: none;
+  }
+
+  .bg_video2{
+    display: block;
+    height: 90rem;
+    width: 110%;
+    background-color: #000;
+    overflow: hidden;
+  }
+  .flipClock{
+    width: calc(3 * 7rem + 7rem);
+    left: 5rem;
+  }
+
+  .flipClockContainer{
+    width: 7rem;
+    height: 7rem;
+    left: 15rem;
+    top: 30rem;
+  }
+
+  .flipUnitContainer{
+    width: 7rem;
+    height: 7rem;
+    margin: 0 1rem;
+  }
+
+  .upperCard,
+.lowerCard{
+  width: 7rem;
+}
+
+.separator {
+  top: 7rem;
+}
+
+.upperCard span,
+.lowerCard span{
+  font-size: 3.3rem;
+}
+
+.flipCard span{
+  font-size: 3.3rem;
+}
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css'; // Import the CSS file for styling
-import Spline from '@splinetool/react-spline';
+import bg_video1 from './question.mp4';
+import bg_video2 from './question1.mp4';
 
 const targetDate = new Date(2024, 1, 24);
 
@@ -114,15 +115,24 @@ const FlipClock = () => {
 const App = () => {
   return (
     <div className="app">
-      <Spline scene="https://prod.spline.design/RNc3uR-sGAxxspQ2/scene.splinecode" />
+      <video autoPlay loop muted className='bg_video1'>
+        <source src={bg_video1} type='video/mp4' />
+      </video>
+
+
+      <video autoPlay loop muted className='bg_video2'>
+        <source src={bg_video2} type='video/mp4' />
+      </video>
+      {/* <Spline scene="https://prod.spline.design/RNc3uR-sGAxxspQ2/scene.splinecode" /> */}
       <div className="flipClockContainer">
         <FlipClock />
       </div>
       <div className="quote">
-      PREPARE FOR AN ADVENTURE IN A BOUNDLESS WORLD OF IMAGINATION, FILLED WITH MYSTERY AND EXCITEMENT!
+        PREPARE FOR AN ADVENTURE IN A BOUNDLESS WORLD OF IMAGINATION, FILLED WITH MYSTERY AND EXCITEMENT!
       </div>
     </div>
   );
 };
+
 
 export default App;
